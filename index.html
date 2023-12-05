@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Clock</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<h1>Time Clock</h1>
+
+<button onclick="clockIn()">Clock In</button>
+<button onclick="clockOut()">Clock Out</button>
+
+<script>
+function clockIn() {
+    logTime("Clock In");
+}
+
+function clockOut() {
+    logTime("Clock Out");
+}
+
+function logTime(action) {
+    // Get current date and time
+    var dateTime = new Date().toLocaleString();
+
+    // Send data to Google Sheets using Google Forms
+    var formURL = "YOUR_GOOGLE_FORM_URL";  // Replace with your Google Form URL
+    var formData = {
+        "entry.1": action,    // Assuming column 1 is for the action (Clock In or Clock Out)
+        "entry.2": dateTime   // Assuming column 2 is for the date and time
+    };
+
+    $.ajax({
+        url: formURL,
+        type: "POST",
+        data: formData,
+        success: function(response) {
+            console.log("Data sent successfully");
+        },
+        error: function(error) {
+            console.error("Error sending data", error);
+        }
+    });
+}
+</script>
+
+</body>
+</html>
