@@ -27,7 +27,7 @@ function logTime(action) {
     var dateTime = new Date().toLocaleString();
 
     // Send data to Google Sheets using Google Forms
-    var formURL = "YOUR_GOOGLE_FORM_URL";  // Replace with your Google Form URL
+    var formURL = "https://docs.google.com/forms/d/e/1FAIpQLSdAc1cJtS9SGJH_w2T3jQRvscb2XRBEaoi1hpFegOScJUWglA/viewform?usp=sf_link";  // Replace with your Google Form URL
     var formData = {
         "entry.1": action,    // Assuming column 1 is for the action (Clock In or Clock Out)
         "entry.2": dateTime   // Assuming column 2 is for the date and time
